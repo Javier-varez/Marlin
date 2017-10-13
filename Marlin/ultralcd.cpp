@@ -210,12 +210,24 @@ static void view_menu_main();
 
 //
 // General API definitions
-// 
+//
+
+#include "splash_intf.h"
+
+void lcd_set_splash_screen() {
+    uint8_t i = 0;
+    for (i = 0; i < LCD_HEIGHT; i++) {
+        lcd_implementation_set_cursor(i, 0);
+        lcd_implementation_print(splash_screen_data[i]);
+    }
+}
 
 void lcd_init()
 {
     // Low level init libraries for lcd & encoder
     lcd_implementation_init();
+
+    lcd_set_splash_screen();
 
     pinMode(BTN_EN1,INPUT);
     pinMode(BTN_EN2,INPUT);

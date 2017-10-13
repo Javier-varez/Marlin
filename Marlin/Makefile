@@ -218,6 +218,13 @@ else ifeq ($(HARDWARE_DISPLAY), Character)
 	CXXSRC += ultralcd.cpp
 endif
 
+ifeq ($(MACHINE_MODEL), Hephestos)
+	CSRC += hephestos_splash.c
+	CDEFS = -DSPLASH_DELAY=5000
+else
+	CSRC += default_splash.c
+endif
+
 # SD library
 VPATHTEMP += libraries/SdFat
 CXXSRC += Sd2Card.cpp SdBaseFile.cpp SdFatUtil.cpp SdFile.cpp SdVolume.cpp
@@ -281,7 +288,7 @@ AVRDUDE_FLAGS = -v -C $(AVRDUDE_CONF) -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_
 # Compile tools configuration:
 # C compiler:
 CDEBUG = -g
-CDEFS    = -DARDUINO=$(ARDUINO_VERSION) -DF_CPU=$(F_CPU) -DLANGUAGE=$(LANGUAGE) ${addprefix -D , $(DEFINES)}
+CDEFS    += -DARDUINO=$(ARDUINO_VERSION) -DF_CPU=$(F_CPU) -DLANGUAGE=$(LANGUAGE) ${addprefix -D , $(DEFINES)}
 #CEXTRA = -Wa,-adhlns=$(<:.c=.lst)
 #CSTANDARD =
 CTUNING = -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -w -ffunction-sections -fdata-sections -fno-use-cxa-atexit
