@@ -1,5 +1,5 @@
 char *splash_screen_data[] = {
-    "Instituto MDC",
+    "I.E.S. MDC",
     "",
     "Departamento de",
     "Artes Plasticas"

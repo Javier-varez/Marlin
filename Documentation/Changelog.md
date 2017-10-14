@@ -1,3 +1,11 @@
+#  Marlin v2.5.2
+---
+### New features:
+* Splash screen for hephestos and printers with character displays.
+
+### Customizations:
+* Hook for FW info menu, to display custom information in a specific model.
+
 #  BQ Marlin v2.5.1
 ---
 ### Improvements:

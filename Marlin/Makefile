@@ -219,7 +219,8 @@ else ifeq ($(HARDWARE_DISPLAY), Character)
 endif
 
 ifeq ($(MACHINE_MODEL), Hephestos)
-	CSRC += hephestos_splash.c
+	CSRC += hephestos_splash.c \
+		hephestos_about.c
 	CDEFS = -DSPLASH_DELAY=5000
 else
 	CSRC += default_splash.c

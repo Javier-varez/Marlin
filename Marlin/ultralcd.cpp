@@ -2303,6 +2303,10 @@ void draw_picture_splash()
     lcd_set_picture(view_picture_splash);
 }
 
+extern "C" __attribute__((weak)) void lcd_about_hook() {
+
+}
+
 static void view_picture_splash()
 {
     if (display_refresh_mode == CLEAR_AND_UPDATE_SCREEN) {
@@ -2321,6 +2325,7 @@ static void view_picture_splash()
             lcd_implementation_print_P(PSTR(FIRMWARE_VER));
             lcd_implementation_print(" ");
             lcd_implementation_print_P(PSTR(BUILD_VER));
+            lcd_about_hook();
 #ifdef DOGLCD
         } while ( u8g.nextPage() );
 #endif

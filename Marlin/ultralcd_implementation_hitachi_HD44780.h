@@ -172,7 +172,7 @@ static void lcd_implementation_clear()
 }
 
 /* Arduino < 1.0.0 is missing a function to print PROGMEM strings, so we need to implement our own */
-static void lcd_implementation_print(const char* str)
+extern "C" void lcd_implementation_print(const char* str)
 {
   lcd.print(str);
 }
@@ -208,7 +208,7 @@ uint8_t lcd_implementation_update_buttons()
   return buttons_vector;
 }
 
-void lcd_implementation_set_cursor(uint8_t row, uint8_t column)
+extern "C" void lcd_implementation_set_cursor(uint8_t row, uint8_t column)
 {
   lcd.setCursor(column, row);
 }
